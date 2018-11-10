@@ -2,12 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo'
 
-const TodoList = ({ todos, toggleTodo }) => (
-    <ul>
-        {todos.map(todo => (
-            <Todo key={todo.id} {...todo} onClick={() => toggleTodo(todo.id)} />
-        ))}
-    </ul>
+const TodoList = (props) => (
+    <FlatList
+        data = { props.todos }
+        keyExtractor = {(item, index) => index.toString()}
+        renderItem = { todo => (
+            <Todo
+                key = { todo.id }
+                { ...todo }
+                onPress = {() => props.toggleTodo(todo.id)}
+            />
+        )}
+    />
 )
 
 TodoList.propTypes = {

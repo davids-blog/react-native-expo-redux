@@ -1,21 +1,25 @@
 import React from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 
-const Todo = ({ onClick, completed, text }) => (
-    <li
-        onClick={onClick}
-        style={{
-            textDecoration: completed ? 'line-through' : 'none'
-        }}
-    >
-        {text}
-    </li>
-)
+const Todo = (props) => {
+    return (
+        <TouchableOpacity
+            onPress = { props.onPress }
+        >
+            <View
+                // style={{textDecoration: completed ? 'line-through' : 'none'}}
+            >
+                <Text>{ props.todoName }</Text>
+            </View>
+        </TouchableOpacity>
+    )
+}
 
 Todo.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    onPress: PropTypes.func.isRequired,
     completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
+    todoName: PropTypes.string.isRequired
 }
 
 export default Todo

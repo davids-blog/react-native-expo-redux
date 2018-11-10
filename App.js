@@ -1,15 +1,18 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import rootReducer from './reducers'
-import App from './components/App'
+import ConnectedApp from './components/ConnectedApp'
 
 const store = createStore(rootReducer)
 
-render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
-)
+export default class App extends Component {
+
+    render() {
+        return (
+            <Provider store={store}>
+                <ConnectedApp />
+            </Provider>
+        )
+    }
+}
