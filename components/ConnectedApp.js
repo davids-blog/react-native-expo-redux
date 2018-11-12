@@ -9,6 +9,8 @@ class ConnectedApp extends Component {
     render() {
         return (
             <View>
+                <View style={{ height:18 }}>
+                </View>
                 <AddTodo />
                 <VisibleTodoList />
                 <Footer />
