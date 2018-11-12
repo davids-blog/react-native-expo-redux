@@ -8,9 +8,9 @@ const Todo = (props) => {
             onPress = { props.onPress }
         >
             <View
-                // style={{textDecoration: completed ? 'line-through' : 'none'}}
+                // style={{textDecoration: props.item.completed ? 'line-through' : 'none'}}
             >
-                <Text>{ props.todoName }</Text>
+                <Text>{ props.item.text }</Text>
             </View>
         </TouchableOpacity>
     )
@@ -18,8 +18,10 @@ const Todo = (props) => {
 
 Todo.propTypes = {
     onPress: PropTypes.func.isRequired,
-    completed: PropTypes.bool.isRequired,
-    todoName: PropTypes.string.isRequired
+    item: PropTypes.shape({
+            completed: PropTypes.bool.isRequired,
+            text: PropTypes.string.isRequired,
+        }).isRequired
 }
 
 export default Todo
